@@ -278,24 +278,24 @@
             return num;
         }
 
-        // $.ajax({
-        //     url: "https://www.instagram.com/criscaricaturas_designeilustra?__a=1",
-        //     type: 'get',
-        //     success: function (response) {
-        //         $("#username").html("@" + response.graphql.user.username);
-        //         $("#profile-pic").attr('src', response.graphql.user.profile_pic_url);
-        //         $("#followers").html(nFormatter(response.graphql.user.edge_followed_by.count) + " seguidores");
-        //         posts = response.graphql.user.edge_owner_to_timeline_media.edges;
-        //         posts_html = '';
-        //         for (var i = 0; i < 6; i++) {
-        //             url = posts[i].node.display_url;
-        //             likes = posts[i].node.edge_liked_by.count;
-        //             comments = posts[i].node.edge_media_to_comment.count;
-        //             posts_html += '<div class="col-lg-2 col-md-2 col-sm-4 col-6"><img class="footer__instagram__item" src="'+url+'"></div>';
-        //         }
-        //         $(".posts").html(posts_html);
-        //     }
-        // });
+        $.ajax({
+            url: "https://www.instagram.com/criscaricaturas_designeilustra?__a=1",
+            type: 'get',
+            success: function (response) {
+                $("#username").html("@" + response.graphql.user.username);
+                $("#profile-pic").attr('src', response.graphql.user.profile_pic_url);
+                $("#followers").html(nFormatter(response.graphql.user.edge_followed_by.count) + " seguidores");
+                posts = response.graphql.user.edge_owner_to_timeline_media.edges;
+                posts_html = '';
+                for (var i = 0; i < 6; i++) {
+                    url = posts[i].node.display_url;
+                    likes = posts[i].node.edge_liked_by.count;
+                    comments = posts[i].node.edge_media_to_comment.count;
+                    posts_html += '<div class="col-lg-2 col-md-2 col-sm-4 col-6"><img class="footer__instagram__item" src="'+url+'"></div>';
+                }
+                $(".posts").html(posts_html);
+            }
+        });
     </script>
 </body>
 
